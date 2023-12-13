@@ -1,0 +1,498 @@
+<!-- Tambahkan library parallax.js di bagian atas file HTML -->
+<script src="https://cdn.jsdelivr.net/parallax.js/1.5.0/parallax.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+
+    <style>
+       body.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; /* Warna ikon dalam mode terang */
+}
+
+.dark-mode .icon-button {
+    color: #fff; /* Warna ikon dalam mode gelap */
+}
+
+.img-fluid-fixed {
+    width: 100%; /* Sesuaikan lebar yang diinginkan */
+    height: auto; /* Memelihara rasio aspek */
+}
+
+        
+    </style>
+
+  <script>
+    window.onload = function () {
+    // Inisialisasi Parallax setelah semua elemen dimuat
+    const parallaxInstance = new Parallax(document.querySelector('.banner-image'));
+};
+     document.addEventListener('DOMContentLoaded', function () {
+        // Your existing code...
+
+        // Initialize Parallax
+        const parallaxInstance = new Parallax(document.querySelector('.banner-image'));
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const body = document.body;
+        const toggleButton = document.getElementById('dark-mode-toggle');
+
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            const mode = isDarkMode ? 'enabled' : 'disabled';
+            localStorage.setItem('dark-mode', mode);
+            updateIcon(isDarkMode);
+        }
+
+        function updateIcon(isDarkMode) {
+            const moonIcon = toggleButton.querySelector('.fa-moon');
+            const sunIcon = toggleButton.querySelector('.fa-sun');
+            if (isDarkMode) {
+                moonIcon.style.display = 'inline';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'inline';
+            }
+        }
+
+        // Setel mode gelap berdasarkan status di localStorage
+        const isDarkMode = localStorage.getItem('dark-mode') === 'enabled';
+        body.classList.toggle('dark-mode', isDarkMode);
+        updateIcon(isDarkMode);
+
+        // Tambahkan event listener pada tombol mode gelap
+        if (toggleButton) {
+            toggleButton.addEventListener('click', toggleDarkMode);
+        }
+
+        // Tambahkan event listener untuk smooth scroll
+        const navbarLinks = document.querySelectorAll('.navbar-nav a');
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Sesuaikan offset jika perlu
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+    <title>Portfolio</title>
+
+
+    <!--  Bootstrap css file  -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <!--  font awesome icons  -->
+    <link rel="stylesheet" href="./css/all.min.css">
+
+
+    <!--  Magnific Popup css file  -->
+    <link rel="stylesheet" href="./vendor/Magnific-Popup/dist/magnific-popup.css">
+
+
+    <!--  Owl-carousel css file  -->
+    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+
+
+    <!--  custom css file  -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!--  Responsive css file  -->
+    <link rel="stylesheet" href="./css/responsive.css">
+    <!-- untuk button-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body class="dark-mode">
+
+
+    <!--  ======================= Start Header Area ============================== -->
+
+
+    <header class="header_area">
+        <div class="main-menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#scrollspyHeading1">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#scrollspyHeading2">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#scrollspyHeading3">skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#scrollspyHeading4">portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#scrollspyHeading5">contact</a>
+                        </li>
+                    </ul>
+                        <button id="dark-mode-toggle" class="icon-button">
+                            <i class="fas fa-moon"></i> 
+                            <i class="fas fa-sun"></i>  
+                        </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!--  ======================= End Header Area ============================== -->
+
+    <!--  ======================= Start Main Area ================================ -->
+    
+    <main class="site-main">
+
+
+        <!--  ======================= Start Banner Area =======================  -->
+        <section id="scrollspyHeading1" class="site-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 site-title">
+                        <h3 class="title-text">Hello</h3>
+                        <h1 class="title-text text-uppercase">I am Aria Manggala Putra</h1>
+                        <h4 class="title-text text-uppercase">  BackEnd Developer</h4>
+                        <div class="site-buttons">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 banner-image">
+                        <img src="./img/banner/banner-image.png" alt="banner-img" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  ======================= End Banner Area =======================  -->
+
+        <!--  ========================= About Area ==========================  -->
+
+        <section id="scrollspyHeading2" class="about-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-image">
+                            <img src="./img/about-us.png" alt="About us" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 about-title">
+                        <h2 class="text-uppercase pt-5">
+                            <span>About me</span>
+                        </h2>
+                        <div class="paragraph py-4 w-75">
+                            <p class="para">
+                                Hello! I am a student at Wikrama Vocational School, with a special interest in the field of Backend Development. Having mastered programming languages ​​such as Laravel, PHP, and Python, I also have broad curiosity and quickly adapt to the environment. The combination of a strong technical understanding and adaptability makes me ready to explore and contribute to the world of web development.
+                            </p>
+                </div>
+            </div>
+        </section>
+
+        <!--  ========================= End About Area ==========================  -->
+
+        <!--  ====================== Start skill Area =============================  -->
+
+        <section id="skills" class="services-area">
+            <div id="scrollspyHeading3" class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center services-title">
+                        <h1 class="text-uppercase title-text">Skills</h1>
+                        <p class="para">
+                            Here are the programming languages that I am familiar with and that I am in the process of learning
+                        </p>
+                    </div>
+                </div>
+                <div class="container services-list">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4">
+                                    <img src="./img/services/php3.jpg"alt="banner-img" class="img-fluid-fixed">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-uppercase font-roboto">PHP</h5>
+                                    <p class="card-text text-secondary">
+                                        php programming language is used for dynamic website creation, form management, interacting with databases, and server-side application development.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4">
+                                    <img src="./img/services/laravel.jpg" alt="banner-img" class="img-fluid-fixed">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-uppercase font-roboto">Laravel</h5>
+                                    <p class="card-text text-secondary">
+                                        Laravel is used for advanced web application development, RESTful API creation, database management with ORM (Eloquent), and integration with various services.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4">
+                                    <img src="./img/services/python.jpg" alt="banner-img" class="img-fluid-fixed">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-uppercase font-roboto">Python</h5>
+                                    <p class="card-text text-secondary">
+                                        Python is used for web development with frameworks like Django or Flask, software development, artificial intelligence, data analysis, and task automation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4">
+                                    <img src="./img/services/js.jpg " alt="banner-img" class="img-fluid-fixed">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-uppercase font-roboto">JavaScript</h5>
+                                    <p class="card-text text-secondary">
+                                        javascript programming language is used for client-side (frontend) development to create interactive user interfaces, integration with backends using technologies such as Node.js, creation of responsive web applications.
+                                    </p>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--  ====================== End skills Area =============================  -->
+
+      <!--  ======================= Project Area =============================  -->
+
+<section id="scrollspyHeading4" class="project-area">
+    <div class="container">
+        <div class="project-title pb-5">
+            <h1 class="text-uppercase title-h1">Projects that have been done</h1>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="active" id="btn1" data-filter="*">All</button>
+            <button type="button" data-filter=".latest">Daily Agenda</button>
+            <button type="button" data-filter=".popular">Webschool</button>
+            <button type="button" data-filter=".apotek">Apotek</button>
+        </div>
+
+        <div class="row grid">
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item latest">
+                <div class="our-project">
+                    <div class="img">
+                        <a class="test-popup-link" href="./img/portfolio/agenda.jpg">
+                            <img src="./img/portfolio/agenda.jpg" alt="portfolio-1" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="title py-4">
+                        <h4 class="text-uppercase">Daily Agenda</h4>
+                        <span class="text-secondary">daily agenda is a website that is used to make it easier for teachers to keep their schedules structured.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item popular">
+                <div class="our-project">
+                    <div class="img">
+                        <a class="test-popup-link" href="./img/portfolio/webschoollll.jpg.png">
+                            <img src="./img/portfolio/webschoollll.jpg.png" alt="portfolio-2" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="title py-4">
+                        <h4 class="text-uppercase">Webschool</h4>
+                        <span class="text-secondary">webschool is a project that contains information from wikrama smk.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item apotek">
+                <div class="our-project">
+                    <div class="img">
+                        <a class="test-popup-link" href="./img/portfolio/apotek.jpg.png">
+                            <img src="./img/portfolio/apotek.jpg.png" alt="portfolio-3" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="title py-4">
+                        <h4 class="text-uppercase">Apotek</h4>
+                        <span class="text-secondary">apotek web is a website that is used to make it easier for pharmacists to record drugs </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--  ======================= End Project Area =============================  -->
+
+
+
+         <!-- ======================== About Me Area ==============================  -->
+
+        <section id="learning-resources" class="about-area">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <div class="about-title">
+                            <h1 class="text-uppercase title-h1">learning resources</h1>
+                            <p class="para">
+                                Here are the sources of learning resources 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container carousel py-lg-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/udemy3.jpg" alt="img1" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">Udemy</h4>
+                            <p class="para">udemy is a global online learning platform that provides courses in a variety of fields, including technology, business, design, and more. With instructors from all over the world, Udemy enables learners to access high-quality lessons, learn independently, and develop skills according to their needs. The platform is known for its flexibility, allowing users to learn anytime and anywhere through video courses, assignments, and interactive exams.</p>
+                        </div>
+                    </div>
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/dicoding.jpg" alt="img2" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">Dicoding</h4>
+                            <p class="para">Dicoding, as the leading online learning platform in Indonesia, offers a series of interactive courses and training in technology development. With a focus on mastering programming concepts, learners can gain relevant skills to face the challenges of the tech world. Besides providing comprehensive learning resources, Dicoding also facilitates collaboration and practical projects, enriching the learning experience for its participants..</p>
+                        </div>
+                    </div>
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/unpas.jpg" alt="img1" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">Web Programming Unpas</h4>
+                            <p class="para">Web Programming UNPAS (Universitas Padjadjaran) is an online learning platform that focuses on teaching programming. With a comprehensively structured curriculum, Web Programming UNPAS provides interactive learning materials to help course participants understand programming concepts well. Experienced instructors from Indonesia ensure effective and in-depth learning in web development and the most famous instructor is Pak Sandika Galih.</p>
+                        </div>
+                    </div>
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/afrizal.jpg" alt="img2" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">Dea Afrizal</h4>
+                            <p class="para">Dea Afrizal, an Indonesian content creator, has made a great contribution to the world of coding learning. Through his content, Dea Afrizal presents in-depth and easy-to-understand coding tutorials. With a unique and clear delivery style, Dea Afrizal creates a fun learning environment, making it easy for beginners to understand the world of programming and now his subscribers are 344 thousand and the most famous learning is javascript.</p>
+                        </div>
+                    </div>
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/dqlab.jpg" alt="img1" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">DQLab</h4>
+                            <p class="para">DQLab, as an Indonesian course, plays an important role in providing learning resources for aspiring data analysts and data scientists. DQLab not only offers high-quality courses, but also provides in-depth insights into data analysis techniques that are relevant to current industry needs. With a comprehensive curriculum and practical projects, DQLab is a top choice for those looking to develop skills in data analysis and data science.</p>
+                        </div>
+                    </div>
+                    <div class="client row">
+                        <div class="col-lg-4 col-md-12 client-img">
+                            <img src="./img/testimonials/w3schools.jpg" alt="img2" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8 col-md-12 about-client">
+                            <h4 class="text-uppercase">W3Schools</h4>
+                            <p class="para">
+                                W3Schools stands out as a premier online learning platform, offering extensive tutorials on a wide array of web development skills. Known for its user-friendly interface, the platform caters to both beginners and experienced developers with up-to-date and practical coding content. The flexibility of learning at one's own pace is a key feature, cementing W3Schools' reputation as a top choice for quality web development education and I've learnt basic coding languages from here.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!--  ======================== End About Me Area ==============================  -->
+
+       
+
+
+    </main>
+    <!--  ======================= End Main Area ================================ -->
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="">
+                <div class="site-logo text-center py-4">
+                    <a href="#"><img src="./img/aaaaa.png" alt="logo"></a>
+                </div>
+                <div class="social text-center">
+                    <h5 class="text-uppercase">Follow me</h5>
+                    <a href="https://web.facebook.com/ariamanggala.putra.3/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/_ariamanggala/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/AriaManggalaPutra"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/6281586644376"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="copyrights text-center">
+                    <p>Copyright © Aria | 2023
+
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Jquery js file  -->
+    <script src="./js/jquery.3.4.1.js"></script>
+
+    <!--  Bootstrap js file  -->
+    <script src="./js/bootstrap.min.js"></script>
+
+    <!--  isotope js library  -->
+    <script src="./vendor/isotope/isotope.min.js"></script>
+
+    <!--  Magnific popup script file  -->
+    <script src="./vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
+
+    <!--  Owl-carousel js file  -->
+    <script src="./vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <!--  custom js file  -->
+    <script src="./js/main.js"></script>
+
+    <!-- Tambahkan library parallax.js -->
+<script src="https://cdn.jsdelivr.net/parallax.js/1.5.0/parallax.min.js"></script>
+
+
+
+</body>
+
+</html>
